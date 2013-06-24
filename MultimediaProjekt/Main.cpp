@@ -2,14 +2,14 @@
 #include	"stdio.h"
 #include	"omp.h"
 
-int main(int argc, char ** argv){
+/*int main(int argc, char ** argv){
 	/*DynamicList * l= new DynamicList();
 	l->addElement("popo");
 	l->addElement("pipi");
 	printf("%s\n",(l->getElement<const char *>(0)));
 	printf("%s\n",(l->getElement<const char *>(1)));
 	delete l;
-	getchar();*/
+	getchar();//
 	int a=0;
 	printf("Num procs: %i\n", omp_get_num_procs());
 #pragma omp parallel num_threads(300)
@@ -21,4 +21,4 @@ int main(int argc, char ** argv){
 		}
 	}
 	getchar();
-}
+}*/
