@@ -18,6 +18,9 @@
     <ClInclude Include="OpLib.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="classify.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

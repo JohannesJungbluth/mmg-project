@@ -121,6 +121,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="classify.h" />
     <ClInclude Include="OpLib.h" />
   </ItemGroup>
   <ItemGroup>

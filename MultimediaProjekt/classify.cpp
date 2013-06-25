@@ -1,31 +1,9 @@
-#include "opencv\cv.h"
-#include "opencv\highgui.h"
-#include "opencv2\imgproc\imgproc.hpp"
-
-#include <iostream>
-#include <fstream>
-#include <string.h>
-
-#define FILENAME "imgData.txt"
-#define FILEPATH "lena.jpg"
+#include "Classify.h"
 
 using namespace cv;
 using namespace std;
 
-void showAndAnnotateImg(string text);
-void writeFile(Point p1, Point p2);
-string readFile();
-
-int main (int argc, const char * argv[]) {
-
-	writeFile(Point(1,1), Point(100,100));
-	string text = readFile();
-	showAndAnnotateImg(text);
-
-	return 0;
-}
-
-//namespace classify{
+namespace Classify{
 
 	void showAndAnnotateImg(string text){
 		Mat input = imread(FILEPATH, 1);
@@ -78,4 +56,4 @@ int main (int argc, const char * argv[]) {
 	
 		return result;
 	}
-//}
+}
