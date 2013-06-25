@@ -10,13 +10,12 @@
 #include <string.h>
 
 #define FILENAME "imgData.txt"
-#define FILEPATH "lena.jpg"
 
 namespace Classify {
 
-		void		showAndAnnotateImg(std::string text);
+		void		showAndAnnotateImg(std::string filepath, std::string text);
 		void		writeFile(cv::Point p1, cv::Point p2);
-		std::string	readFile();
+		std::string	readFile(std::string filepath);
 
 }
 
