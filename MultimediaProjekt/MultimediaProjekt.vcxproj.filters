@@ -21,15 +21,27 @@
     <ClInclude Include="classify.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="HierElement.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="DynamicList.cpp">
+    <ClCompile Include="classify.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="classify.cpp">
+    <ClCompile Include="HierElement.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkingObject.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="WorkImage.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowedHOG.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

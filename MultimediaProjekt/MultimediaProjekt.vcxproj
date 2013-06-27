@@ -67,12 +67,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <OpenMPSupport>true</OpenMPSupport>
-      <AdditionalIncludeDirectories>C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_INCL)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\opencv\build\x64\vc9\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_core242.lib;opencv_highgui242.lib;opencv_imgproc242.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opencv_core245.lib;opencv_highgui245.lib;opencv_imgproc245.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -80,12 +80,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <OpenMPSupport>true</OpenMPSupport>
-      <AdditionalIncludeDirectories>C:\opencv\build\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_INCL)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\opencv\build\x64\vc9\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opencv_core242.lib;opencv_highgui242.lib;opencv_imgproc242.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%OPENCV_DIR%\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opencv_core245.lib;opencv_highgui245.lib;opencv_imgproc245.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,12 +122,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="classify.h" />
+    <ClInclude Include="HierElement.h" />
     <ClInclude Include="OpLib.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="classify.cpp" />
-    <ClCompile Include="DynamicList.cpp" />
+    <ClCompile Include="HierElement.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="WindowedHOG.cpp" />
+    <ClCompile Include="WorkImage.cpp" />
+    <ClCompile Include="WorkingObject.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
