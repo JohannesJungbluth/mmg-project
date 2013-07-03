@@ -1,0 +1,1 @@
+filename: Train/pos/crop_000603.png _ #Obj: 1 _ Object1: (85, 41) - (282, 634)

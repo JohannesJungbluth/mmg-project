@@ -1,0 +1,1 @@
+filename: Train/pos/person_050.png _ #Obj: 2 _ Object1: (332, 95) - (451, 418 _ Object2: (87, 109) - (119, 199)

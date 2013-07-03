@@ -13,6 +13,8 @@
 #define FILEPATH3I "person_044.png"
 #define FILEPATH4I "person_050.png"
 
+#define PATH "Train/pos/"
+
 
 using namespace std;
 
@@ -21,15 +23,19 @@ int main(int argc, char ** argv){
 	stringstream ss;
 	
 	string text = Classify::readFile(FILEPATH1);
+	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH1I, text);
 
 	text = Classify::readFile(FILEPATH2);
+	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH2I, text);
 
 	text = Classify::readFile(FILEPATH3);
+	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH3I, text);
 
 	text = Classify::readFile(FILEPATH4);
+	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH4I, text);
 
 	return 0;
