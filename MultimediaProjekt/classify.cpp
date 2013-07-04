@@ -3,9 +3,11 @@
 using namespace cv;
 using namespace std;
 
-namespace Classify{
+namespace Classify
+{
 
-	void showAndAnnotateImg(string filepath, string text){
+	void showAndAnnotateImg(string filepath, string text)
+	{
 		// find number of objects in image
 		int strStart = (int)text.find("#Obj: ") + 6;
 		int strEnd = (int)text.find(" _ Object")-1;
@@ -16,8 +18,8 @@ namespace Classify{
 		string tmp = text;
 		strEnd = (int)text.length();
 
-		for(int i = 1; i <= objInImg; i++){
-			
+		for(int i = 1; i <= objInImg; i++)
+		{	
 			stream.str("");
 			stream << i;
 
@@ -25,7 +27,8 @@ namespace Classify{
 
 			stream.str("");
 			stream << i+1;
-			if(objInImg!=1){
+			if(objInImg!=1)
+			{
 				if(objInImg >= i+1)
 					strEnd = (int)tmp.find(" Object"+stream.str());
 				else
@@ -63,10 +66,11 @@ namespace Classify{
 		}
 	}
 	
-	void writeFile(string text, string path){
+	void writeFile(string text, string path)
+	{
 		// find filename
 		string filename;
-		int strStart = (int)text.find("filename: ") + 10 + path.length();
+		int strStart = (int)text.find("filename: ") + 10 + (int)path.length();
 		int strEnd = (int)text.find(".png");
 		string str = text.substr(strStart, strEnd-strStart);
 		filename = "new_" + str.substr(0, (int)str.find('"')) + ".txt"; 
@@ -74,7 +78,8 @@ namespace Classify{
 
 		// write text in file
 		ofstream file (filename);
-		if (file.is_open())  {
+		if (file.is_open())
+		{
 			file << text;
 			file.close();
 		}
@@ -83,12 +88,15 @@ namespace Classify{
 	
 /*	string format:	filename: bla.png _ #Obj: X _ ObjectY: (Xmin, Ymin) - (Xmax, Ymax) _ ObjectZ: (Xmin, Ymin) - (Xmax, Ymax)
 */
-	string readFile(string filepath){
+	string readFile(string filepath)
+	{
 		string result;
 		string text;
 		ifstream file (filepath);
-		if (file.is_open())	{
-			while (file.good())	{
+		if (file.is_open())
+		{
+			while (file.good())
+			{
 				getline (file,text);
 				result += text;
 			}
@@ -111,7 +119,8 @@ namespace Classify{
 			result += "#Obj: " + stream.str();
 			text = text.substr((int)text.find("# Details for object")+20,strEnd);
 
-			for(int i = 1; i <= objInImg; i++){
+			for(int i = 1; i <= objInImg; i++)
+			{
 			// find position i
 				stream.str("");
 				stream << i;
@@ -132,5 +141,23 @@ namespace Classify{
 		cout << "read file:" << result << endl;
 
 		return result;
+	}
+
+	
+	/*	return true if overlap between correctRectangle and hypothesisRectangle exceeds 50%
+	*/
+	bool isHypothesisRight(Point cPointMin, Point cPointMax, Point hPointMin, Point hPointMax)
+	{
+		int height = abs(cPointMin.y - cPointMax.y);
+		int width = abs(cPointMin.x - cPointMax.x);
+		
+		int dHeightMin = abs(cPointMin.y - hPointMin.y);
+		int dHeightMax = abs(cPointMax.y - hPointMax.y);
+		
+		int dWidthMin = abs(cPointMin.x - hPointMin.x);
+		int dWidthMax = abs(cPointMax.x - hPointMax.x);
+	
+		return dHeightMin < 0.5 * height && dHeightMax < 0.5 * height
+			&& dWidthMin < 0.5 * width && dWidthMin < 0.5 * width;
 	}
 }

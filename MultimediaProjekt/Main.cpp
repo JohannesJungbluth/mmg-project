@@ -5,23 +5,18 @@
 
 
 #define FILEPATH1 "crop_000010.txt"
-#define FILEPATH2 "crop_000603.txt"
-#define FILEPATH3 "person_044.txt"
-#define FILEPATH4 "person_050.txt"
+#define FILEPATH2 "person_050.txt"
 #define FILEPATH1I "crop_000010.png"
-#define FILEPATH2I "crop_000603.png"
-#define FILEPATH3I "person_044.png"
-#define FILEPATH4I "person_050.png"
+#define FILEPATH2I "person_050.png"
 
 #define PATH "Train/pos/"
 
 
 using namespace std;
+using namespace cv;
 
 int main(int argc, char ** argv){
 
-	stringstream ss;
-	
 	string text = Classify::readFile(FILEPATH1);
 	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH1I, text);
@@ -30,13 +25,7 @@ int main(int argc, char ** argv){
 	Classify::writeFile(text, PATH);
 	Classify::showAndAnnotateImg(FILEPATH2I, text);
 
-	text = Classify::readFile(FILEPATH3);
-	Classify::writeFile(text, PATH);
-	Classify::showAndAnnotateImg(FILEPATH3I, text);
-
-	text = Classify::readFile(FILEPATH4);
-	Classify::writeFile(text, PATH);
-	Classify::showAndAnnotateImg(FILEPATH4I, text);
+	getchar();
 
 	return 0;
 }
