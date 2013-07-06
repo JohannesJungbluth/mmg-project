@@ -129,6 +129,7 @@
     <ClCompile Include="classify.cpp" />
     <ClCompile Include="HierElement.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="OpLib.cpp" />
     <ClCompile Include="WindowedHOG.cpp" />
     <ClCompile Include="WorkImage.cpp" />
     <ClCompile Include="WorkingObject.cpp" />

@@ -11,14 +11,23 @@
 
 namespace Classify
 {
+	//	TRAINER
+	void		createClassificator(float window_feature[], cv::Rect window_rect, cv::Rect positive_rects[]);
 
-		void		showAndAnnotateImg(std::string filepath, std::string text);
+	//	SVM
+	void		train();
+	void		classify();
 
-		void		writeFile(std::string text, std::string path);
-		std::string	readFile(std::string filepath);
+	//	AnnotatedImageComposer
+	void		deleteOverlappingPositiveHits();
+	void		composeImage(cv::Mat final_image);
 
-		bool		isHypothesisRight(cv::Point cPointMin, cv::Point cPointMax, cv::Point hPointMin, cv::Point hPointMax);
 
+
+
+	void		showAndAnnotateImg(std::string filepath, std::string text);
+	void		writeFile(std::string text, std::string path);
+	std::string	readFile(std::string filepath);
 }
 
 #endif
