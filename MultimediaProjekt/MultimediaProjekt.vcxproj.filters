@@ -24,6 +24,9 @@
     <ClInclude Include="HierElement.h">
       <Filter>Headerdateien</Filter>
     </ClInclude>
+    <ClInclude Include="ImgPre.h">
+      <Filter>Headerdateien</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -45,6 +48,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
     <ClCompile Include="OpLib.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="ImgPre.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>

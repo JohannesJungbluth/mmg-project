@@ -123,11 +123,13 @@
   <ItemGroup>
     <ClInclude Include="classify.h" />
     <ClInclude Include="HierElement.h" />
+    <ClInclude Include="ImgPre.h" />
     <ClInclude Include="OpLib.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="classify.cpp" />
     <ClCompile Include="HierElement.cpp" />
+    <ClCompile Include="ImgPre.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OpLib.cpp" />
     <ClCompile Include="WindowedHOG.cpp" />
