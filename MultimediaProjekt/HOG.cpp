@@ -38,7 +38,7 @@ namespace HOG
 				{
 					// vlfeat farbarray: erst alle blauen, dann alle grünen und dann alle roten pixel hintereinander
 					// opencv RGB passt das so?
-					if(img.channels() > 1)
+					/*if(img.channels() > 1)
 					{
 						int corrector = 0;
 						if(i == 1)
@@ -47,14 +47,14 @@ namespace HOG
 							corrector = 2;
 						frame[img.cols*img.rows*corrector + x*y] = img.ptr<float>(y)[x+i];
 					}
-					else
+					else*/
 						frame[x*img.rows + y*(i+1)] = img.ptr<float>(y)[x+i];
 				}
 			}
 		}
 
 
-		VlHog* hog =  vl_hog_new(VlHogVariantDalalTriggs, vl_size(18), VL_FALSE) ;
+		VlHog* hog =  vl_hog_new(VlHogVariantUoctti, vl_size(18), VL_FALSE) ;
 		vl_hog_put_image(hog, frame, vl_size(img.cols), vl_size(img.rows), vl_size(img.channels()), vl_size(8));
 		free(frame);
 
@@ -82,6 +82,8 @@ namespace HOG
 				res.ptr<float>(y)[x] = result[x*imageHeight + y];
 			}
 		}
+
+		feature_array = result;
 		vl_free(result);
 
 		resize(res, res, Size(img.cols, img.rows),0,0,1);
