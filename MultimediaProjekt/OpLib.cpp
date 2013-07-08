@@ -7,18 +7,14 @@ namespace OpLib
 {
 	//	return true if overlap between correctRectangle and hypothesisRectangle exceeds 50%
 	
-	bool isHypothesisRight(Point cPointMin, Point cPointMax, Point hPointMin, Point hPointMax)
-	{
-		int height = abs(cPointMin.y - cPointMax.y);
-		int width = abs(cPointMin.x - cPointMax.x);
-		
-		int dHeightMin = abs(cPointMin.y - hPointMin.y);
-		int dHeightMax = abs(cPointMax.y - hPointMax.y);
-		
-		int dWidthMin = abs(cPointMin.x - hPointMin.x);
-		int dWidthMax = abs(cPointMax.x - hPointMax.x);
+	bool checkForOverlap(cv::Rect rect_1, cv::Rect rect_2)
+	{	
+		if(rect_1.width != rect_2.width || rect_1.height != rect_2.height)
+			return false;
+
+		int dHeight = abs(rect_1.y - rect_2.y);
+		int dWidth = abs(rect_1.x - rect_2.x);
 	
-		return dHeightMin < 0.5 * height && dHeightMax < 0.5 * height
-			&& dWidthMin < 0.5 * width && dWidthMin < 0.5 * width;
+		return dHeight < 0.5 * rect_1.height && dWidth < 0.5 * rect_1.width;
 	}
 }

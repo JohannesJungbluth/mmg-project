@@ -17,7 +17,7 @@
 
 namespace
 {
-	bool	checkForOverlap(cv::Point cPointMin, cv::Point cPointMax, cv::Point hPointMin, cv::Point hPointMax);
+	bool	checkForOverlap(cv::Rect rect_1, cv::Rect rect_2);
 }
 
 #endif
