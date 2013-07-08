@@ -4,23 +4,26 @@
 #include "OpLib.h"
 #include <stdio.h>
 #include <array>
-#include "opencv2\core\core.hpp"
+#include <vector>
+#include "opencv\cv.h"
+#include "opencv\highgui.h"
+#include "opencv2\imgproc\imgproc.hpp"
 
-namespace ImgPre{
-//IMAGELOADER
 
-	void loadImagesFromPackage(std::string folderPath, cv::Mat loadedImages[]){
-	
-	}
+namespace ImgPre
+{
 
-	void getLoadedImages(cv::Mat loadedImages[]){
+	//IMAGELOADER
 
-	}
+	void loadImagesFromPackage(std::string folderPath, std::vector<cv::Mat> loadedImages);
+
+	void getLoadedImages(std::vector<cv::Mat> loadedImages, std::vector<OpLib::WorkingObject> *working_array);
 
 	//IMAGESCALER
 
-	void scaleImageToScaledArray(Image input_image, ImageArray scaled_images){
+	void scaleImageToScaledArray(cv::Mat input_image, std::vector<cv::Mat> *scaled_images);
 
-	}
+	double* computeScaleFactors(int stepsPerOctave);
 }
+
 #endif
