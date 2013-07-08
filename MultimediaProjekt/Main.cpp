@@ -1,4 +1,5 @@
 #include "ImgPre.h"
+#include "HOG.h"
 
 using namespace cv;
 
@@ -37,6 +38,14 @@ int main(int argc, char ** argv){
 		i++;
 	}
 	*/
+
+	/* TEST - extractHOGFeatures
+
+	*/
+	Mat mat = imread("C:/Users/Johannes/Dropbox/Uni/Studium/5_SS_13/Multimedia Projekt/Blatt_3/lena.jpg");
+	float *float_array = 0;
+	HOG::extractHOGFeatures(mat, float_array);
+	waitKey();
 
 	return 0;
 }

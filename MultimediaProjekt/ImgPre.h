@@ -2,9 +2,11 @@
 #define IMG_PRE_H
 
 #include "OpLib.h"
+
 #include <stdio.h>
 #include <array>
 #include <vector>
+
 #include "opencv\cv.h"
 #include "opencv\highgui.h"
 #include "opencv2\imgproc\imgproc.hpp"

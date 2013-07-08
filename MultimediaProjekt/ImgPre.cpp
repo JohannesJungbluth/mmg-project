@@ -29,7 +29,7 @@ namespace ImgPre
 	void scaleImageToScaledArray(cv::Mat input_image, std::vector<cv::Mat> *scaled_images)
 	{
 		int stepsPerOctave = 5;
-		int minImgSize = 2*8;
+		int minImgSize = 8*2;
 
 		double* array = computeScaleFactors(stepsPerOctave);
 		int length = 7*stepsPerOctave;
