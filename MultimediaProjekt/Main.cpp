@@ -4,6 +4,14 @@
 using namespace cv;
 
 int main(int argc, char ** argv){
+	//Test -  loadImagesFromPackage
+	std::vector<Mat> v;
+
+	ImgPre::loadImagesFromPackage("C:\\Users\\Administrator\\Desktop\\Bilder", &v);
+	for(std::vector<Mat>::iterator it = v.begin(); it != v.end(); it++){
+		imshow("Image", *it);
+		waitKey();
+	}
 
 	/* TEST - getLoadedImages
 
@@ -42,10 +50,13 @@ int main(int argc, char ** argv){
 	/* TEST - extractHOGFeatures
 
 	*/
+	/*
 	Mat mat = imread("C:/Users/Johannes/Dropbox/Uni/Studium/5_SS_13/Multimedia Projekt/Blatt_3/lena.jpg");
 	float *float_array = 0;
 	HOG::extractHOGFeatures(mat, float_array);
 	waitKey();
 
 	return 0;
+	*/
+
 }

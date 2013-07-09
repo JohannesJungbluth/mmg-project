@@ -17,7 +17,7 @@ namespace ImgPre
 
 	//IMAGELOADER
 
-	void loadImagesFromPackage(std::string folderPath, std::vector<cv::Mat> loadedImages);
+	void loadImagesFromPackage(std::string folderPath, std::vector<cv::Mat> *loadedImages);
 
 	void getLoadedImages(std::vector<cv::Mat> loadedImages, std::vector<OpLib::WorkingObject> *working_array);
 
