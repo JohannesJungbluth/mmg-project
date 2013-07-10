@@ -80,11 +80,11 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <OpenMPSupport>true</OpenMPSupport>
-      <AdditionalIncludeDirectories>$(OPENCV_INCL)\include;C:\vlfeat-0.9.16;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(OPENCV_INCL)\include;$(VL_FEAT);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib;C:\vlfeat-0.9.16\bin\win64</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\lib;$(VL_FEAT)\bin\win64</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_core245.lib;opencv_highgui245.lib;opencv_imgproc245.lib;vl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

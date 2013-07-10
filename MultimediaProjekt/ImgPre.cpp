@@ -1,8 +1,8 @@
 #include "ImgPre.h"
-#include <boost\filesystem.hpp>
+/*#include <boost\filesystem.hpp>
 
 namespace fs = boost::filesystem;
-
+*/
 
 
 
@@ -19,15 +19,16 @@ namespace ImgPre
 	*/
 	void loadImagesFromPackage(string folderPath, vector<Mat> *loadedImages)
 	{
-		fs::path someDir(folderPath);
+		/*fs::path someDir(folderPath);
 		fs::directory_iterator end_iter;
-		if ( fs::exists(someDir) && fs::is_directory(someDir)){
-			for( fs::directory_iterator dir_iter(someDir) ; dir_iter != end_iter ; ++dir_iter){
-				Mat image;
-				image = imread((*dir_iter).path().string(), CV_LOAD_IMAGE_COLOR);
-				(*loadedImages).push_back(image);
+		if (fs::exists(someDir) && fs::is_directory(someDir))
+		{
+			for(fs::directory_iterator dir_iter(someDir); dir_iter != end_iter; ++dir_iter)
+			{
+				Mat image = imread(dir_iter->path().string(), CV_LOAD_IMAGE_COLOR);
+				loadedImages->push_back(image);
 			}
-		}
+		}*/
 	}
 
 	void getLoadedImages(vector<Mat> loadedImages, vector<OpLib::WorkingObject> *working_array)

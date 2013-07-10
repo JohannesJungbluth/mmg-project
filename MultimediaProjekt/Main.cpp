@@ -4,14 +4,17 @@
 using namespace cv;
 
 int main(int argc, char ** argv){
-	//Test -  loadImagesFromPackage
+
+	/* TEST -  loadImagesFromPackage
+
 	std::vector<Mat> v;
 
-	ImgPre::loadImagesFromPackage("C:\\Users\\Administrator\\Desktop\\Bilder", &v);
+	ImgPre::loadImagesFromPackage("C:/Users/Administrator/Desktop/Bilder", &v);
 	for(std::vector<Mat>::iterator it = v.begin(); it != v.end(); it++){
 		imshow("Image", *it);
 		waitKey();
 	}
+	*/
 
 	/* TEST - getLoadedImages
 
@@ -52,9 +55,8 @@ int main(int argc, char ** argv){
 		hogOrientations = 9
 		cellSize = 8
 	*/
-	/*
 	int cellSize = 8;
-
+	int hogOrientations = 9;
 	float *float_array = 0;
 	Mat mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001008a.png");
 	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
@@ -66,19 +68,12 @@ int main(int argc, char ** argv){
 
 	mat = imread("C:/Users/Johannes/Desktop/test.png");
 	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
-
 	waitKey();
 
 	mat = imread("C:/Users/Johannes/Desktop/test2.png");
 	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
 	waitKey();
-
-	//resize(mat, mat, Size(0,0), 2, 2, 1);
-
-	//imshow("img", mat);
-	//waitKey();
+	
 
 	return 0;
-	*/
-
 }

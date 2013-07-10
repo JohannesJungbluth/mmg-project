@@ -18,7 +18,7 @@ namespace HOG
 				frame[x] = img.at<float>(x/img.rows, x%img.cols);
 			else if (img.type() == CV_8UC3)
 				for (int i=0; i<3; i++){
-					frame[x+i*img.cols*img.rows] = (float)img.at<Vec3b>(x/img.rows, x%img.cols)[i]/255.0;
+					frame[x+i*img.cols*img.rows] = (float)img.at<Vec3b>(x/img.rows, x%img.cols)[i]/255.f;
 				}
 		}
 
