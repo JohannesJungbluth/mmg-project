@@ -7,55 +7,24 @@ namespace HOG
 
 	// HOG_TRANSFORMER
 
-	void extractHOGFeatures(cv::Mat input_img, float feature_array[])
+	void extractHOGFeatures(Mat input_img, float feature_array[], int hogOrientations, int cellSize)
 	{
-		Mat img = Mat(input_img.rows, input_img.cols, CV_32FC3);
-		input_img.convertTo(img, CV_32FC3);
-
-		float scale = 255.f;
-		for (int y = 0; y < img.rows; y++)
-		{
-			for (int x = 0; x < img.cols; x++)
-			{
-				for(int i=0; i<img.channels(); i++)
-				{
-					if(input_img.channels() == 1)
-					{
-						img.ptr<float>(y)[x+i] /= scale;
-					}
-				}
-			}
-		}
-
-		imshow("input", input_img);
+		Mat img = input_img;
+				imshow("input", input_img);
 
 		float* frame = (float*)malloc(img.rows * img.cols * img.channels() * sizeof(float));
-		for(int y=0; y<img.rows; y++)
-		{
-			for(int x=0; x<img.cols; x++)
-			{
-				for(int i=0; i<img.channels(); i++)
-				{
-					// vlfeat farbarray: erst alle blauen, dann alle grünen und dann alle roten pixel hintereinander
-					// opencv RGB passt das so?
-					/*if(img.channels() > 1)
-					{
-						int corrector = 0;
-						if(i == 1)
-							corrector = 1;
-						else if(i == 0)
-							corrector = 2;
-						frame[img.cols*img.rows*corrector + x*y] = img.ptr<float>(y)[x+i];
-					}
-					else*/
-						frame[x*img.rows + y*(i+1)] = img.ptr<float>(y)[x+i];
+		for (int x=0; x<img.cols*img.rows; x++){
+			if (img.type() == CV_32FC1)
+				frame[x] = img.at<float>(x/img.rows, x%img.cols);
+			else if (img.type() == CV_8UC3)
+				for (int i=0; i<3; i++){
+					frame[x+i*img.cols*img.rows] = (float)img.at<Vec3b>(x/img.rows, x%img.cols)[i]/255.0;
 				}
-			}
 		}
 
-
-		VlHog* hog =  vl_hog_new(VlHogVariantUoctti, vl_size(18), VL_FALSE) ;
-		vl_hog_put_image(hog, frame, vl_size(img.cols), vl_size(img.rows), vl_size(img.channels()), vl_size(8));
+		// VlHogVariantUoctti - VlHogVariantDalalTriggs
+		VlHog* hog =  vl_hog_new(VlHogVariantUoctti, vl_size(hogOrientations), VL_FALSE) ;
+		vl_hog_put_image(hog, frame, vl_size(img.cols), vl_size(img.rows), vl_size(img.channels()), vl_size(cellSize));
 		free(frame);
 
 		vl_size hogWidth = vl_hog_get_width(hog);
@@ -64,6 +33,8 @@ namespace HOG
 
 		float* hogArray = (float*)vl_malloc(hogWidth * hogHeight * hogDimenison * sizeof(float));
 		vl_hog_extract(hog, hogArray);
+
+		//convert_hog_array(hogArray, (int)hogDimenison, (int)hogOrientations, (int)hogWidth, (int)hogHeight, input_img.cols-2, input_img.rows-2);
 
 		vl_size glyphSize = vl_hog_get_glyph_size(hog);
 		vl_size imageHeight = glyphSize * hogHeight;
@@ -86,17 +57,9 @@ namespace HOG
 		feature_array = result;
 		vl_free(result);
 
-		resize(res, res, Size(img.cols, img.rows),0,0,1);
+		//resize(res, res, Size(img.cols, img.rows),0,0,1);
 
 		imshow("hog", res);
-	
-		for (int y = 0; y < res.rows; y++)
-		{
-			for (int x = 0; x < res.cols; x++)
-			{
-				res.ptr<float>(y)[x] *= scale;
-			}
-		}
 	}
 
 	// SLIDING_WINDOW_GENERATOR
