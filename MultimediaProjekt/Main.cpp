@@ -49,12 +49,34 @@ int main(int argc, char ** argv){
 
 	/* TEST - extractHOGFeatures
 
+		hogOrientations = 9
+		cellSize = 8
 	*/
 	/*
-	Mat mat = imread("C:/Users/Johannes/Dropbox/Uni/Studium/5_SS_13/Multimedia Projekt/Blatt_3/lena.jpg");
+	int cellSize = 8;
+
 	float *float_array = 0;
-	HOG::extractHOGFeatures(mat, float_array);
+	Mat mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001008a.png");
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
 	waitKey();
+
+	mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001027a.png");
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+
+	mat = imread("C:/Users/Johannes/Desktop/test.png");
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+
+	waitKey();
+
+	mat = imread("C:/Users/Johannes/Desktop/test2.png");
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+
+	//resize(mat, mat, Size(0,0), 2, 2, 1);
+
+	//imshow("img", mat);
+	//waitKey();
 
 	return 0;
 	*/

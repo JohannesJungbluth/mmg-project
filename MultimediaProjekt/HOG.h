@@ -14,12 +14,14 @@
 #include "vl\hog.h"
 #include "vl\mathop.h"
 
+#include "hog_util.h"
+
 namespace HOG
 {
 
 	// HOG_TRANSFORMER
 
-	void extractHOGFeatures(cv::Mat input_img, float feature_array[]);
+	void extractHOGFeatures(cv::Mat input_img, float feature_array[], int hogOrientations, int cellSize);
 
 	// SLIDING_WINDOW_GENERATOR
 

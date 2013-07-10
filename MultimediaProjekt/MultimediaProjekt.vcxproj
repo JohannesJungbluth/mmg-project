@@ -124,6 +124,7 @@
     <ClInclude Include="classify.h" />
     <ClInclude Include="HierElement.h" />
     <ClInclude Include="HOG.h" />
+    <ClInclude Include="hog_util.h" />
     <ClInclude Include="ImgPre.h" />
     <ClInclude Include="OpLib.h" />
   </ItemGroup>
@@ -131,6 +132,7 @@
     <ClCompile Include="classify.cpp" />
     <ClCompile Include="HierElement.cpp" />
     <ClCompile Include="HOG.cpp" />
+    <ClCompile Include="hog_util.cpp" />
     <ClCompile Include="ImgPre.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="OpLib.cpp" />
