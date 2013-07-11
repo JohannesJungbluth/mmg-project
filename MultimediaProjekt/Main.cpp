@@ -6,10 +6,10 @@ using namespace cv;
 int main(int argc, char ** argv){
 
 	/* TEST -  loadImagesFromPackage
-
+	
 	std::vector<Mat> v;
 
-	ImgPre::loadImagesFromPackage("C:/Users/Administrator/Desktop/Bilder", &v);
+	ImgPre::loadImagesFromPackage("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos", &v);
 	for(std::vector<Mat>::iterator it = v.begin(); it != v.end(); it++){
 		imshow("Image", *it);
 		waitKey();
@@ -58,22 +58,39 @@ int main(int argc, char ** argv){
 	int cellSize = 8;
 	int hogOrientations = 9;
 	float *float_array = 0;
-	Mat mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001008a.png");
-	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
-	waitKey();
-
-	mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001027a.png");
-	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
-	waitKey();
-
-	mat = imread("C:/Users/Johannes/Desktop/test.png");
-	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
-	waitKey();
-
-	mat = imread("C:/Users/Johannes/Desktop/test2.png");
+	Mat mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001008a.png", 1);
 	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
 	waitKey();
 	
+	mat = imread("C:/Users/Johannes/Downloads/INRIAPerson/96X160H96/Train/pos/crop001027a.png", 1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
 
+	mat = imread("C:/Users/Johannes/Dropbox/Uni/Studium/5_SS_13/Multimedia Projekt/Blatt_3/lena.jpg", 1);
+	resize(mat, mat, Size(0, 0),0.5,0.5,1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+
+	/*mat = imread("C:/Users/Johannes/Desktop/test.png", 1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+	
+	mat = imread("C:/Users/Johannes/Desktop/test2.png", 1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+
+	mat = imread("C:/Users/Johannes/Desktop/test3.png", 1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();*/
+
+	mat = imread("C:/Users/Johannes/Desktop/test4.png", 1);
+	resize(mat, mat, Size(0, 0),0.5,0.5,1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+
+	mat = imread("C:/Users/Johannes/Desktop/test5.png", 1);
+	HOG::extractHOGFeatures(mat, float_array, hogOrientations, cellSize);
+	waitKey();
+	
 	return 0;
 }

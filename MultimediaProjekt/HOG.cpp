@@ -9,22 +9,25 @@ namespace HOG
 
 	void extractHOGFeatures(Mat input_img, float feature_array[], int hogOrientations, int cellSize)
 	{
-		Mat img = input_img;
-				imshow("input", input_img);
+		imshow("input", input_img);
+		
+		input_img.convertTo(input_img, CV_8UC1);
 
-		float* frame = (float*)malloc(img.rows * img.cols * img.channels() * sizeof(float));
-		for (int x=0; x<img.cols*img.rows; x++){
-			if (img.type() == CV_32FC1)
-				frame[x] = img.at<float>(x/img.rows, x%img.cols);
-			else if (img.type() == CV_8UC3)
-				for (int i=0; i<3; i++){
-					frame[x+i*img.cols*img.rows] = (float)img.at<Vec3b>(x/img.rows, x%img.cols)[i]/255.f;
+		/*float* frame = (float*)malloc(input_img.rows * input_img.cols * input_img.channels() * sizeof(float));
+		for (int x=0; x<input_img.cols*input_img.rows; x++)
+		{
+			if (input_img.type() == CV_32FC1)
+				frame[x] = input_img.at<float>(x/input_img.rows, x%input_img.cols);
+			else if (input_img.type() == CV_8UC3)
+				for (int i=0; i<3; i++)
+				{
+					frame[x+i*input_img.cols*input_img.rows] = (float)input_img.at<Vec3b>(x/input_img.rows, x%input_img.cols)[i]/255.f;
 				}
-		}
+		}*/
 
 		// VlHogVariantUoctti - VlHogVariantDalalTriggs
 		VlHog* hog =  vl_hog_new(VlHogVariantUoctti, vl_size(hogOrientations), VL_FALSE) ;
-		vl_hog_put_image(hog, frame, vl_size(img.cols), vl_size(img.rows), vl_size(img.channels()), vl_size(cellSize));
+		vl_hog_put_image(hog, input_img.ptr<float>(0), vl_size(input_img.cols), vl_size(input_img.rows), vl_size(input_img.channels()), vl_size(cellSize));
 		free(frame);
 
 		vl_size hogWidth = vl_hog_get_width(hog);
@@ -34,32 +37,22 @@ namespace HOG
 		float* hogArray = (float*)vl_malloc(hogWidth * hogHeight * hogDimenison * sizeof(float));
 		vl_hog_extract(hog, hogArray);
 
-		//convert_hog_array(hogArray, (int)hogDimenison, (int)hogOrientations, (int)hogWidth, (int)hogHeight, input_img.cols-2, input_img.rows-2);
+		//Mat test = convert_hog_array(hogArray, (int)hogDimenison, (int)hogOrientations, (int)hogWidth, (int)hogHeight, (int)hogWidth, (int)hogHeight);
+		//imshow("hog_render", test);
 
 		vl_size glyphSize = vl_hog_get_glyph_size(hog);
 		vl_size imageHeight = glyphSize * hogHeight;
 		vl_size imageWidth = glyphSize * hogWidth;
 
-		float* result = (float*)vl_malloc(imageWidth * imageHeight * sizeof(float)) ;
-		vl_hog_render(hog, result, hogArray, hogWidth, hogHeight);
+		Mat result = Mat::zeros(imageHeight, imageWidth, CV_32FC1);
+		vl_hog_render(hog, result.ptr<float>(0), hogArray, hogWidth, hogHeight);
 		vl_free(hogArray);
-	
-		Mat res = Mat((int)imageHeight, (int)imageWidth, CV_32FC1);
 		vl_hog_delete(hog);
-		for(int y=0; y<res.rows; y++)
-		{
-			for(int x=0; x<res.cols; x++)
-			{
-				res.ptr<float>(y)[x] = result[x*imageHeight + y];
-			}
-		}
-
-		feature_array = result;
-		vl_free(result);
 
 		//resize(res, res, Size(img.cols, img.rows),0,0,1);
 
-		imshow("hog", res);
+		imshow("hog", result);
+		//feature_array = result;
 	}
 
 	// SLIDING_WINDOW_GENERATOR
